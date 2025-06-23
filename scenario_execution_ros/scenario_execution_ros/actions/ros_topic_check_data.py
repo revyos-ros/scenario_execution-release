@@ -46,6 +46,7 @@ class RosTopicCheckData(BaseAction):
         self.wait_for_first_message = None
         self.last_msg = None
         self.found = None
+        self.comparison_text = ""
 
     def setup(self, **kwargs):
         """
@@ -77,11 +78,12 @@ class RosTopicCheckData(BaseAction):
 
     def execute(self,
                 expected_value: str,
+                eval_expected_value: bool,
                 comparison_operator: int,
                 fail_if_no_data: bool,
                 fail_if_bad_comparison: bool,
                 wait_for_first_message: bool):
-        self.set_expected_value(expected_value)
+        self.set_expected_value(expected_value, eval_expected_value)
         self.comparison_operator = get_comparison_operator(comparison_operator)
         self.fail_if_no_data = fail_if_no_data
         self.fail_if_bad_comparison = fail_if_bad_comparison
@@ -107,7 +109,7 @@ class RosTopicCheckData(BaseAction):
         if self.found is True:
             self.feedback_message = f"Found expected value in received message."
         else:
-            self.feedback_message = f"Received message does not contain expected value."
+            self.feedback_message = f"Received message does not contain expected value. Check: {self.comparison_text}"
 
     def check_data(self, msg):
         if msg is None or self.member_name is None or self.expected_value is None:
@@ -121,14 +123,18 @@ class RosTopicCheckData(BaseAction):
                 value = check_attr(msg)
             except AttributeError:
                 self.feedback_message = f"Member name not found {self.member_name}"
+        self.comparison_text = f"{value} {self.comparison_operator.__name__} {self.expected_value}"
         self.found = self.comparison_operator(value, self.expected_value)
 
-    def set_expected_value(self, expected_value_string):
+    def set_expected_value(self, expected_value_string, eval_expected_value):
         if not isinstance(expected_value_string, str):
             raise ActionError("Only string allowed as expected_value.", action=self)
         error_string = ""
         try:
-            parsed_value = literal_eval("".join(expected_value_string.split('\\')))
+            if eval_expected_value:
+                parsed_value = literal_eval("".join(expected_value_string.split('\\')))
+            else:
+                parsed_value = expected_value_string
             msg = get_ros_message_type(self.topic_type)()
             if self.member_name == "":
                 self.expected_value = msg
@@ -140,5 +146,5 @@ class RosTopicCheckData(BaseAction):
                     self.expected_value = parsed_value
                 else:
                     set_message_fields(self.expected_value, parsed_value)
-        except (TypeError, AttributeError) as e:
+        except (TypeError, AttributeError, ValueError) as e:
             raise ActionError(f"Could not parse '{expected_value_string}'. {error_string}", action=self) from e
