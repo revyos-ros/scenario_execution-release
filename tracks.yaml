@@ -37,7 +37,7 @@ tracks:
       :{release_inc} --os-name fedora
     - git-bloom-generate -y rosrpm --prefix release/:{ros_distro} :{ros_distro} -i
       :{release_inc} --os-name rhel
-    devel_branch: jazzy
+    devel_branch: main
     last_release: jazzy-1.2.0
     last_version: 1.2.0
     name: upstream
@@ -47,5 +47,5 @@ tracks:
     release_tag: jazzy-:{version}
     ros_distro: jazzy
     vcs_type: git
-    vcs_uri: https://github.com/IntelLabs/scenario_execution.git
+    vcs_uri: https://github.com/cps-test-lab/scenario-execution.git
     version: :{auto}
