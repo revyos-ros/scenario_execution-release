@@ -1,3 +1,62 @@
+## scenario_execution (jazzy) - 1.3.0-1
+
+The packages in the `scenario_execution` repository were released into the `jazzy` distro by running `/home/z572/gits/revyos-ros/venv/bin/bloom-release -r jazzy scenario_execution --override-release-repository-push-url git@github.com:revyos-ros/scenario_execution-release.git --edit` on `Mon, 23 Jun 2025 03:53:22 -0000`
+
+These packages were released:
+- `scenario_execution`
+- `scenario_execution_control`
+- `scenario_execution_coverage`
+- `scenario_execution_gazebo`
+- `scenario_execution_interfaces`
+- `scenario_execution_nav2`
+- `scenario_execution_os`
+- `scenario_execution_ros`
+- `scenario_execution_rviz`
+- `scenario_execution_x11`
+
+These packages were explicitly ignored:
+- `arm_sim_scenario`
+- `example_external_method`
+- `example_library`
+- `example_nav2`
+- `example_multi_robot`
+- `example_scenario_control`
+- `example_simulation`
+- `scenario_execution_docker`
+- `scenario_execution_floorplan_dsl`
+- `scenario_execution_kubernetes`
+- `scenario_execution_moveit2`
+- `scenario_execution_pybullet`
+- `gazebo_static_camera`
+- `gazebo_tf_publisher`
+- `tb4_sim_scenario`
+- `tf_to_pose_publisher`
+- `scenario_status`
+- `message_modification`
+- `scenario_execution_docker_test`
+- `scenario_execution_gazebo_test`
+- `scenario_execution_nav2_test`
+- `scenario_execution_ros_test`
+- `scenario_execution_test`
+- `scenario_execution_moveit2`
+
+Version of package(s) in repository `scenario_execution`:
+
+- upstream repository: https://github.com/cps-test-lab/scenario-execution.git
+- release repository: https://github.com/revyos-ros/scenario_execution-release.git
+- rosdistro version: `1.3.0-1`
+- old version: `1.2.0-5`
+- new version: `1.3.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `1.0.0`
+- rosdep version: `0.22.2`
+- rosdistro version: `0.9.0`
+- vcstools version: `0.1.42`
+
+
 ## scenario_execution (jazzy) - 1.2.0-5
 
 The packages in the `scenario_execution` repository were released into the `jazzy` distro by running `/home/z572/gits/revyos-ros/venv2/bin/bloom-release -r jazzy scenario_execution --override-release-repository-push-url git@github.com:revyos-ros/scenario_execution-release.git` on `Tue, 08 Oct 2024 04:37:13 -0000`
