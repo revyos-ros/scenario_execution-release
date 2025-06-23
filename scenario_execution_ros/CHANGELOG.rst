@@ -2,6 +2,16 @@
 Changelog for package scenario_execution_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.0 (2025-06-04)
+------------------
+* add ros examples and new actions
+* update run_process action to send signals to whole process group
+
+1.2.1 (2025-05-27)
+------------------
+* update py-trees dependency
+* update from OpenSCENARIO 2.0 to OpenSCENARIO DSL V2.1.0
+
 1.2.0 (2024-10-02)
 ------------------
 * check_data_external: add action to check with custom python function
